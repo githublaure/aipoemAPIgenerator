@@ -11,6 +11,11 @@ a {
 add ASCII animation
   */
 
+
+
+
+
+
 h1 {
   text-align: center;
   font-weight: 800;
@@ -39,7 +44,10 @@ form {
   color: #407088;
 }
 
-
+.container {
+  margin: 120px auto;
+  max-width: 600px;
+}
 
 .submit-button {
   margin-left: 10px;
