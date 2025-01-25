@@ -7,9 +7,37 @@ a {
   color: #ffb5b5;
 }
 
-/*
-add ASCII animation
-  */
+@keyframes fallingSakura {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+body::before {
+  content: "✿";
+  position: fixed;
+  color: #ffb5b5;
+  font-size: 20px;
+  animation: fallingSakura 5s linear infinite;
+  left: 10%;
+}
+
+body::after {
+  content: "✿";
+  position: fixed;
+  color: #ffb5b5;
+  font-size: 20px;
+  animation: fallingSakura 7s linear infinite;
+  left: 80%;
+}
 
 
 

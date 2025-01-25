@@ -1,5 +1,5 @@
 
-function generatePoem(event) {
+async function generatePoem(event) {
   event.preventDefault();
 
   const instructionsInput = document.querySelector(".instructions");
@@ -8,25 +8,36 @@ function generatePoem(event) {
   const apiKey = "oafbe8035b88726c0e80be71t4409330";
   const poemDiv = document.querySelector(".poem");
 
-  poemDiv.innerHTML = "Generating poem...";
+  poemDiv.innerHTML = "✿ Generating your poem... ✿";
 
-  const apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      new Typewriter(".poem", {
-        strings: data.answer,
-        autoStart: true,
-        delay: 50,
-        cursor: "",
-      });
-    })
-    .catch(error => {
-      poemDiv.innerHTML = "Sorry, there was an error generating the poem. Please try again.";
-      console.error("Error:", error);
+  try {
+    const response = await fetch("https://api.shecodes.io/ai/v1/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: apiKey
+      },
+      body: JSON.stringify({ prompt, context })
     });
+
+    const data = await response.json();
+    
+    if (data.answer) {
+      const typewriter = new Typewriter(poemDiv, {
+        delay: 50,
+        cursor: "✿"
+      });
+      
+      typewriter
+        .typeString(data.answer)
+        .start();
+    } else {
+      poemDiv.innerHTML = "Sorry, could not generate a poem. Please try again.";
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    poemDiv.innerHTML = "Sorry, there was an error generating the poem. Please try again.";
+  }
 }
 
-const poemFormElement = document.querySelector("form");
-poemFormElement.addEventListener("submit", generatePoem);
+document.querySelector("form").addEventListener("submit", generatePoem);
