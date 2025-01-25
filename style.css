@@ -3,22 +3,12 @@ body {
   text-align: center;
 }
 
+a {
+  color: #ffb5b5;
+}
+
 /*
-.first-color { 
-background: #ffcbcb; 
-}
-
-.second-color { 
-background: #ffb5b5; 
-}
-
-.third-color { 
-background: #407088; 
-}
-
-.fourth-color { 
-background: #132743; 
-}
+add ASCII animation
   */
 
 h1 {
@@ -26,7 +16,7 @@ h1 {
   font-weight: 800;
   font-size: 36px;
   line-height: 1.5;
-  color: #ffb5b5;
+  color: #407088;
 }
 
 form {
@@ -64,9 +54,31 @@ form {
 
 .poem {
   font-size: 20px;
-  background-color: #132743;
+  background-color: #407088;
+  color: #132743;
   padding: 20px;
   line-height: 24px;
   box-shadow: 0px 20px 60px rgba (65, 50, 100, 0.08);
   ;
+}
+
+footer {
+  text-align: center;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+footer {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 30px;
+  color: white;
+}
+
+footer a {
+
+  color: white;
+  text-decoration: none;
 }
