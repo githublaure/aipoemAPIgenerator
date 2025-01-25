@@ -11,15 +11,8 @@ async function generatePoem(event) {
   poemDiv.innerHTML = "✿ Generating your poem... ✿";
 
   try {
-    const response = await fetch("https://api.shecodes.io/ai/v1/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: apiKey
-      },
-      body: JSON.stringify({ prompt, context })
-    });
-
+    const apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+    const response = await fetch(apiUrl);
     const data = await response.json();
     
     if (data.answer) {
