@@ -21,23 +21,19 @@ a {
   }
 }
 
-body::before {
-  content: "✿";
+.sakura {
   position: fixed;
   color: #ffb5b5;
   font-size: 20px;
-  animation: fallingSakura 5s linear infinite;
-  left: 10%;
+  pointer-events: none;
+  z-index: 1;
 }
 
-body::after {
-  content: "✿";
-  position: fixed;
-  color: #ffb5b5;
-  font-size: 20px;
-  animation: fallingSakura 7s linear infinite;
-  left: 80%;
-}
+.sakura:nth-child(1) { animation: fallingSakura 5s linear infinite; left: 10%; }
+.sakura:nth-child(2) { animation: fallingSakura 7s linear infinite; left: 30%; animation-delay: 1s; }
+.sakura:nth-child(3) { animation: fallingSakura 6s linear infinite; left: 50%; animation-delay: 2s; }
+.sakura:nth-child(4) { animation: fallingSakura 8s linear infinite; left: 70%; animation-delay: 3s; }
+.sakura:nth-child(5) { animation: fallingSakura 9s linear infinite; left: 90%; animation-delay: 4s; }
 
 
 
